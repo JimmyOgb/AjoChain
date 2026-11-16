@@ -9,6 +9,7 @@
 ## 🌟 Live Links & Core Resources
 
 - 🌐 **Live Vercel Production dApp:** **[https://ajochain-mu.vercel.app](https://ajochain-mu.vercel.app)**
+- 🎥 **Narrated 1080p Live Demo Video:** **[`demo/ajochain-demo.mp4`](demo/ajochain-demo.mp4)** *(1920x1080, 30fps, 2m 05s, Authentic Nigerian English Narration via `en-NG-AbeoNeural`)*
 - 💻 **GitHub Repository:** **[https://github.com/JimmyOgb/AjoChain](https://github.com/JimmyOgb/AjoChain)**
 - 🏭 **AjoFactory on OKLink:** **[`0xAD74798cDb9513d06c0060Bf6850a8080F024B0b`](https://www.oklink.com/x-layer-testnet/address/0xAD74798cDb9513d06c0060Bf6850a8080F024B0b)**
 - 🔗 **Seed AjoCircle on OKLink:** **[`0xEc454C6f3d5D68Ff310aBeC3b4a6A769aD4D3A6c`](https://www.oklink.com/x-layer-testnet/address/0xEc454C6f3d5D68Ff310aBeC3b4a6A769aD4D3A6c)**

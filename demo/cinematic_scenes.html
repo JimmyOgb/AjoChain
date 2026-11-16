@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AjoChain Cinematic Scenes</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #0B1220;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #F8FAFC;
+    }
+    .scene {
+      position: absolute;
+      top: 0; left: 0;
+      width: 1920px;
+      height: 1080px;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+    .scene.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    /* SCENE 1 STYLES */
+    #scene1 {
+      background: radial-gradient(circle at 50% 40%, rgba(16, 185, 129, 0.12) 0%, rgba(11, 18, 32, 0.95) 75%),
+                  url('file:///C:/Users/NO GO NO/projects/ajochain/frontend/src/assets/ajo-african-bg.svg') center/cover no-repeat;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 70px 100px;
+    }
+    .ken-burns {
+      animation: kenBurns 12s ease-out forwards;
+    }
+    @keyframes kenBurns {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.06) translateY(-10px); }
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34D399;
+      padding: 10px 24px;
+      border-radius: 9999px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .title-huge {
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1.15;
+      text-align: center;
+      color: #FFFFFF;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.8);
+      margin-top: 24px;
+    }
+    .title-huge span.highlight {
+      background: linear-gradient(135deg, #F59E0B 0%, #10B981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle-rich {
+      font-size: 26px;
+      color: #CBD5E1;
+      text-align: center;
+      max-width: 1200px;
+      line-height: 1.5;
+      margin-top: 18px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+    }
+    .stats-row {
+      display: flex;
+      gap: 30px;
+      margin-top: 35px;
+    }
+    .stat-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 18px;
+      padding: 24px 36px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .stat-val {
+      font-size: 40px;
+      font-weight: 900;
+      color: #F59E0B;
+      font-family: monospace;
+    }
+    .stat-lbl {
+      font-size: 15px;
+      font-weight: 600;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 6px;
+    }
+
+    /* SCENE 2 STYLES: THE TORN BOOK & DISPUTE */
+    #scene2 {
+      background: radial-gradient(circle at 50% 50%, rgba(225, 29, 72, 0.15) 0%, rgba(11, 18, 32, 0.98) 75%);
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 70px 100px;
+    }
+    .warning-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(225, 29, 72, 0.2);
+      border: 1px solid rgba(225, 29, 72, 0.5);
+      color: #FB7185;
+      padding: 10px 24px;
+      border-radius: 9999px;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .torn-notebook-wrapper {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-top: 20px;
+    }
+    .torn-notebook {
+      width: 650px;
+      height: 480px;
+      background: #FFFDF7;
+      border-radius: 6px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.85);
+      position: relative;
+      overflow: hidden;
+      border-left: 14px solid #E11D48;
+      background-image: repeating-linear-gradient(transparent, transparent 35px, #93C5FD 36px);
+      padding: 30px 40px;
+      color: #1E293B;
+      transform: rotate(-1.5deg);
+      border-right: 4px dashed #94A3B8;
+    }
+    .notebook-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 2px solid #E11D48;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    .notebook-title {
+      font-family: serif;
+      font-size: 26px;
+      font-weight: bold;
+      color: #0F172A;
+      font-style: italic;
+    }
+    .notebook-entry {
+      font-family: 'Courier New', monospace;
+      font-size: 20px;
+      line-height: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .scratch-line {
+      text-decoration: line-through;
+      color: #94A3B8;
+    }
+    .ink-blot {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0) 70%);
+      border-radius: 50%;
+      top: 180px;
+      right: 70px;
+      pointer-events: none;
+    }
+    .rubber-stamp {
+      position: absolute;
+      border: 5px solid;
+      border-radius: 10px;
+      padding: 10px 24px;
+      font-size: 32px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      mix-blend-mode: multiply;
+      opacity: 0.9;
+    }
+    .stamp-dispute {
+      color: #E11D48;
+      border-color: #E11D48;
+      top: 140px;
+      left: 180px;
+      transform: rotate(-12deg);
+    }
+    .stamp-missing {
+      color: #DC2626;
+      border-color: #DC2626;
+      top: 260px;
+      left: 210px;
+      transform: rotate(8deg);
+    }
+    .dispute-panel {
+      width: 580px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(225, 29, 72, 0.4);
+      border-radius: 20px;
+      padding: 35px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+    }
+    .dispute-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    .dispute-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(225, 29, 72, 0.2);
+      border: 1px solid #E11D48;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FB7185;
+      font-size: 18px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .dispute-text h4 {
+      font-size: 20px;
+      font-weight: bold;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+    .dispute-text p {
+      font-size: 15px;
+      color: #94A3B8;
+      line-height: 1.4;
+    }
+
+    /* SCENE 3 STYLES: THE REVEAL */
+    #scene3 {
+      background: radial-gradient(circle at 50% 45%, rgba(16, 185, 129, 0.2) 0%, rgba(11, 18, 32, 0.98) 75%),
+                  url('file:///C:/Users/NO GO NO/projects/ajochain/frontend/src/assets/ajo-african-bg.svg') center/cover no-repeat;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 100px;
+      text-align: center;
+    }
+    .hero-badge-group {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .reveal-title {
+      font-size: 82px;
+      font-weight: 900;
+      color: #FFFFFF;
+      letter-spacing: -1px;
+      text-shadow: 0 8px 30px rgba(0,0,0,0.9);
+      margin-bottom: 12px;
+    }
+    .reveal-subtitle {
+      font-size: 38px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #F59E0B 0%, #10B981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 24px;
+    }
+    .reveal-tagline {
+      font-size: 22px;
+      color: #CBD5E1;
+      max-width: 950px;
+      line-height: 1.5;
+      margin-bottom: 40px;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      width: 100%;
+      max-width: 1400px;
+    }
+    .pillar-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 18px;
+      padding: 24px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    }
+    .pillar-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    .pillar-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+    .pillar-desc {
+      font-size: 13px;
+      color: #94A3B8;
+      line-height: 1.4;
+    }
+
+    /* SCENE 7 CLOSING CARD */
+    #scene7_closing {
+      background: radial-gradient(circle at 50% 45%, rgba(16, 185, 129, 0.25) 0%, rgba(11, 18, 32, 0.98) 75%),
+                  url('file:///C:/Users/NO GO NO/projects/ajochain/frontend/src/assets/ajo-african-bg.svg') center/cover no-repeat;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 100px;
+      text-align: center;
+    }
+    .live-url-box {
+      margin-top: 35px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 2px solid rgba(16, 185, 129, 0.6);
+      border-radius: 20px;
+      padding: 20px 48px;
+      font-family: monospace;
+      font-size: 34px;
+      font-weight: 900;
+      color: #34D399;
+      box-shadow: 0 0 40px rgba(16, 185, 129, 0.3);
+      letter-spacing: 1px;
+    }
+    .closing-details {
+      display: flex;
+      gap: 30px;
+      margin-top: 35px;
+    }
+    .closing-pill {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 14px 28px;
+      border-radius: 9999px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #F8FAFC;
+    }
+
+    /* SUBTITLES CAPTION BAR */
+    .caption-bar {
+      position: absolute;
+      bottom: 40px;
+      left: 100px;
+      right: 100px;
+      background: rgba(11, 18, 32, 0.92);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: 16px;
+      padding: 16px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      backdrop-filter: blur(10px);
+    }
+    .caption-flag {
+      font-size: 28px;
+    }
+    .caption-text {
+      font-size: 21px;
+      font-weight: 600;
+      color: #F8FAFC;
+      line-height: 1.4;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SCENE 1: PROBLEM HOOK (COMMUNITY SAVINGS) -->
+  <div id="scene1" class="scene active">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div class="badge-pill">
+        <span>🇳🇬</span>
+        <span>Traditional West African Thrift • Ajo & Esusu</span>
+      </div>
+      <h1 class="title-huge">
+        Over <span class="highlight">$15 Billion</span> Saved Together.<br>
+        Built on Communal Trust.
+      </h1>
+      <p class="subtitle-rich">
+        Across Nigeria and West Africa, millions of market traders, founders, and professionals pool funds weekly into a communal rotational pot.
+      </p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-val">300+ Yrs</div>
+        <div class="stat-lbl">Generational Heritage</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">80M+</div>
+        <div class="stat-lbl">Active Savers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">$15B+</div>
+        <div class="stat-lbl">Annual Volume</div>
+      </div>
+    </div>
+
+    <div class="caption-bar">
+      <span class="caption-flag">🇳🇬</span>
+      <span class="caption-text">"Across Nigeria and West Africa, millions save together through Ajo and Esusu. Every week, everyone contributes into one shared pot."</span>
+    </div>
+  </div>
+
+  <!-- SCENE 2: THE FRAGILE PAPER BOOK & DISPUTE -->
+  <div id="scene2" class="scene">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div class="warning-badge">
+        <span>⚠️</span>
+        <span>The Vulnerability of Human-Managed Ledgers</span>
+      </div>
+      <h2 class="title-huge" style="font-size: 54px; margin-top: 14px;">
+        One Paper Book. One Human Pocket.<br>
+        <span style="color: #FB7185;">Zero Guarantees.</span>
+      </h2>
+    </div>
+
+    <div class="torn-notebook-wrapper">
+      <div class="torn-notebook">
+        <div class="notebook-header">
+          <div class="notebook-title">Balogun Market Ajo — Nov 2026</div>
+          <div style="font-family: monospace; font-size: 14px; color: #E11D48; font-weight: bold;">PAGE TORN</div>
+        </div>
+        <div class="notebook-entry"><span>1. Ada Obi</span><span>Paid ₦50,000</span></div>
+        <div class="notebook-entry"><span class="scratch-line">2. Chidi Okafor</span><span style="color: #DC2626;">Missed / Dispute?</span></div>
+        <div class="notebook-entry"><span>3. Ngozi Bello</span><span>Paid ₦50,000</span></div>
+        <div class="notebook-entry" style="color: #DC2626; font-weight: bold;"><span>4. Collector Total</span><span>₦150,000 (WHERE?)</span></div>
+        
+        <div class="ink-blot"></div>
+        <div class="rubber-stamp stamp-dispute">RECORD DISPUTED</div>
+        <div class="rubber-stamp stamp-missing">COLLECTOR MISSING</div>
+      </div>
+
+      <div class="dispute-panel">
+        <div class="dispute-item">
+          <div class="dispute-icon">✕</div>
+          <div class="dispute-text">
+            <h4>Torn & Altered Paper Pages</h4>
+            <p>Physical exercise books get lost, soaked in rain, or secretly crossed out during heated disagreements.</p>
+          </div>
+        </div>
+        <div class="dispute-item">
+          <div class="dispute-icon">✕</div>
+          <div class="dispute-text">
+            <h4>Collector Default & Flight Risk</h4>
+            <p>One person holds everyone's money in their bank or pocket. If they disappear, honest members lose everything.</p>
+          </div>
+        </div>
+        <div class="dispute-item">
+          <div class="dispute-icon">✕</div>
+          <div class="dispute-text">
+            <h4>Early Payout Defaulters</h4>
+            <p>Members take Turn #1 pot early, then vanish without paying subsequent rounds, leaving remaining peers stranded.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="caption-bar">
+      <span class="caption-flag">⚠️</span>
+      <span class="caption-text">"Yet the entire circle relies on one paper exercise book and one human collector's pocket. Pages get torn, records spark heated disputes, and sometimes the collector disappears with everyone's money."</span>
+    </div>
+  </div>
+
+  <!-- SCENE 3: SOLUTION REVEAL -->
+  <div id="scene3" class="scene">
+    <div class="hero-badge-group">
+      <div class="badge-pill" style="border-color: rgba(245, 158, 11, 0.5); color: #F59E0B; background: rgba(245, 158, 11, 0.15);">
+        <span>⚡</span>
+        <span>X Layer zkEVM Rollup</span>
+      </div>
+      <div class="badge-pill">
+        <span>📜</span>
+        <span>TapeOut Protocol (tapeout.net)</span>
+      </div>
+    </div>
+
+    <h1 class="reveal-title">AjoChain</h1>
+    <h2 class="reveal-subtitle">One Exercise Book. Zero Collector Pockets.</h2>
+    <p class="reveal-tagline">
+      Upgrading the time-honored West African Esusu with non-custodial smart contracts, TapeOut digital boolean circuits, and 100% on-chain DeWEB static hosting.
+    </p>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">🔒</div>
+        <div class="pillar-title">0% Human Custody</div>
+        <div class="pillar-desc">Locked smart contract vaults handle all funds. No human collector can redirect or steal savings.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">⚡</div>
+        <div class="pillar-title">TapeOut Digital Circuits</div>
+        <div class="pillar-desc">Verifiable NAND/LATCH boolean netlists enforce turn order and mathematical fairness on X Layer.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🛡️</div>
+        <div class="pillar-title">1x Deposit Protection</div>
+        <div class="pillar-desc">Upfront security deposits automatically slash defaulters, guaranteeing every round is made whole.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🌐</div>
+        <div class="pillar-title">DeWEB 100% On-Chain</div>
+        <div class="pillar-desc">Permanent static dApp frontend hosted inside ERC-6551 Circuit Containers with zero web servers.</div>
+      </div>
+    </div>
+
+    <div class="caption-bar">
+      <span class="caption-flag">✨</span>
+      <span class="caption-text">"Introducing AjoChain. One Exercise Book. Zero Collector Pockets. A decentralized rotational savings protocol built on X Layer and TapeOut."</span>
+    </div>
+  </div>
+
+  <!-- SCENE 7: CLOSING TITLE CARD -->
+  <div id="scene7_closing" class="scene">
+    <div class="hero-badge-group">
+      <div class="badge-pill">
+        <span>🇳🇬</span>
+        <span>X Layer TapeOut Accelerate Submission</span>
+      </div>
+    </div>
+
+    <h1 class="reveal-title" style="font-size: 76px; margin-top: 10px;">AjoChain</h1>
+    <h2 class="reveal-subtitle" style="font-size: 34px;">One Exercise Book. Zero Collector Pockets.</h2>
+    <p class="reveal-tagline" style="font-size: 20px; max-width: 850px;">
+      Traditional African thrift meets zero-knowledge rollup security. Live now on X Layer Testnet and hosted on-chain via TapeOut DeWEB.
+    </p>
+
+    <div class="live-url-box">
+      🌐 https://ajochain-mu.vercel.app/
+    </div>
+
+    <div class="closing-details">
+      <div class="closing-pill">📍 X Layer Testnet (Chain ID 1952)</div>
+      <div class="closing-pill">📜 AjoFactory: 0xAD74798c...4B0b</div>
+      <div class="closing-pill">💻 GitHub: github.com/JimmyOgb/AjoChain</div>
+    </div>
+
+    <div class="caption-bar">
+      <span class="caption-flag">🚀</span>
+      <span class="caption-text">"Every contribution, collateral lock, and round payout is permanently audited on the X Layer blockchain. No lost paper, no missing collector. AjoChain: traditional African thrift, powered by zero-knowledge security. Live now at ajochain-mu.vercel.app."</span>
+    </div>
+  </div>
+
+  <script>
+    window.showScene = (sceneId) => {
+      document.querySelectorAll('.scene').forEach(el => {
+        el.classList.remove('active');
+        el.style.display = 'none';
+      });
+      const target = document.getElementById(sceneId);
+      if (target) {
+        target.style.display = 'flex';
+        setTimeout(() => target.classList.add('active'), 50);
+      }
+    };
+  </script>
+</body>
+</html>

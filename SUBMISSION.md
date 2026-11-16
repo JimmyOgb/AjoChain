@@ -11,6 +11,7 @@
 | :--- | :--- |
 | **Project Name** | **AjoChain** (AjoBook) |
 | **Live Vercel dApp** | **[https://ajochain-mu.vercel.app](https://ajochain-mu.vercel.app)** |
+| **Live Demo Video** | **[`demo/ajochain-demo.mp4`](demo/ajochain-demo.mp4)** *(1080p 30fps, 2m 05s, Authentic Nigerian English Narration)* |
 | **GitHub Repository** | **[https://github.com/JimmyOgb/AjoChain](https://github.com/JimmyOgb/AjoChain)** |
 | **Target Network** | **X Layer** (Chain ID: `196` Mainnet, `1952` Testnet) |
 | **Protocol Layer** | **TapeOut Protocol** (`tapeout.net` Circuits, ERC-6551 Containers, DeWEB, TapeSend TAP-10) |
